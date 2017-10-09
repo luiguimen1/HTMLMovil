@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="viewport"  content="width = device-width, initial-scale=1" charset="utf-8">
+
+        <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.4.css">
+        <link href="css/jquery.mobile.datepicker.css" rel="stylesheet" type="text/css"/>
+        <script src="JS/jquery-1.11.1.js"></script>
+        <script src="JS/jquery.mobile-1.4.4.js"></script>
+        <script src="JS/jquery.ui.datepicker.js" type="text/javascript"></script>
+        <script src="JS/jquery.mobile.datepicker" type="text/javascript"></script>
+        <script src="JS/ajax.js" type="text/javascript"></script>
+        <script src="JS/NewLogica.js" type="text/javascript"></script>
+        <script src="JS/Excel.js" type="text/javascript"></script>
+    <body>
+        <div data-role="page" id="pagina1">
+            <div data-role="header">
+                <h1>Inicio Sesión</h1>
+            </div>
+            <div data-role="content">
+                <form>
+                    <div class="ui-field-contain">
+                        <label for="usuario">Usuario:</label>
+                        <input type="text" name="usuario" id="usuario">
+                        <label for="clave">Clave:</label>
+                        <input type="password" name="clave" id="clave">
+                    </div>
+                    <a id="boton1" class="ui-btn">Iniciar Sesión</a>
+                </form>
+            </div>
+            <div data-role="footer">
+                <p align="center">Sistema de información</p>
+            </div>
+        </div>
+
+        <div data-role="page" id="abonar">
+            <div data-role="header">
+                <h1>Realizar abono</h1>
+                 <div class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-delete Salir" style="display: inline;">Salir</div>
+                 <div class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-gear Inico" style="display: inline;">Inicio</div>
+            </div>
+            <div data-role="content">
+                <form id="forPago" name="forPago">
+                    <input type="hidden" name="adID" id="adID">
+                    <div class="ui-field-contain">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <div class="ui-bar ui-bar-a">
+                                    <label>Usuario</label>
+                                    <input type="text" name="abuser" id="abuser" readonly="readonly">
+                                </div>
+                            </div>
+
+                            <div class="ui-block-b">
+                                <div class="ui-bar ui-bar-a">
+                                    <label>Saldo</label>
+                                    <input type="text" name="absaldo" id="absaldo" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <label>Abona</label>
+                        <input type="number" name="abona" id="abona">
+                    </div>
+                    <a id="regAbono" class="ui-btn">Registar</a>
+                </form>
+            </div>
+            <div data-role="footer">
+                <p align="center">Sistema de información</p>
+            </div>
+        </div>
+
+        <!-- Bloque de codigo de confirmar abono -->
+        <div data-role="page" id="ConfiAbono" data-dialog="true">
+            <div data-role="header">
+                <h1>Confirme Abono</h1>
+            </div>
+            <div data-role="content">
+                <p>Cliente:<span id="conCli" style="font-weight: bold; font-size: 15px;"></span></p>
+                <p>Debe:<span id="conDeb"  style="font-weight: bold; font-size: 15px;"></span></p>
+                <p>Abona:<span id="conAbo"  style="font-weight: bold; font-size: 15px;"></span></p>
+                <button id="conPago">Confirmar</button>
+                <p id="InfoTra"></p>
+                <a  href="#abonar" id="boton3" class="ui-btn">Regresar</a>
+            </div>
+        </div>
+        
+        
+        <!-- Bloque de codigo de ingreso no valido -->
+        <div data-role="page" id="pagina2" data-dialog="true">
+            <div data-role="header">
+                <h1>Error: #21</h1>
+
+            </div>
+            <div data-role="content">
+                <center><h3>Los datos ingresados no son Validos</h3></center>
+                <h1 id="datos"></h1>
+                <a  href="#pagina1" id="boton3" class="ui-btn">Regresar</a>
+            </div>
+        </div>
+
+
+        <div data-role="page" id="paginaPerfil">
+            <div data-role="header">
+                <h1>Menu Principal</h1>
+                    <div class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-delete Salir" style="display: inline;">Salir</div>
+                    <div class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-gear Inico" style="display: none;">Inicio</div>
+            </div>
+            <div data-role="content">
+                <form id="Opciones" name="Opciones">
+
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <div class="ui-bar ui-bar-a">
+                                <button type="button" id="AddUser">Crear Usuario</button> 
+                            </div>
+                        </div>
+                        <div class="ui-block-b">
+                            <div class="ui-bar ui-bar-a">
+                                <button type="button" id="UpdUser">Modificar Usuario</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <div class="ui-bar ui-bar-a">
+                                <button type="button" id="AddPro">Crear Producto</button>
+                            </div>
+                        </div>
+                        <div class="ui-block-b">
+                            <div class="ui-bar ui-bar-a">
+                                <button type="button" id="UpdPro">Modificar Producto</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <div class="ui-bar ui-bar-a">
+                                <button type="button" id="TraerUser">Realizar Venta</button>  
+                            </div>
+                        </div>
+                        <div class="ui-block-b">
+                            <div class="ui-bar ui-bar-a">
+                                <button type="button" id="InfoVen">Informe</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <div class="ui-bar ui-bar-a">
+                                <button type="button" id="AbonosUser">Abonos</button>  
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                <div id="Comprador" class="alert alert-dismissible alert-info well well-sm" style="display: none;">
+                    El comprador es <strong id="ElNombre"></strong>
+                </div>
+                <div id="Comprados" class="well well-sm alert-info" style="display: none; overflow: hidden;">
+                </div>
+                <div id="user"></div>
+            </div>
+            <div data-role="footer">
+                <p align="center">Versión 0.1- Lic. Luis Alvarez</p>
+            </div>
+        </div>
+    </body>
+
+</html>
